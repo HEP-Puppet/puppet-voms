@@ -7,3 +7,4 @@ summary 'Resources for managing a gLite Virtual Organization Membership Service 
 description 'This modules provides classes and definitions required to manage and properly configure a gLite service or client supporting authorization using the gLite Virtual Organization Membership Service (VOMS).'
 project_page 'http://glite.org'
 dependency 'puppetlabs/stdlib', '>=2.2.1'
+dependency 'puppetlabs-mysql', '>=0.6.1'

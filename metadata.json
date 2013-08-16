@@ -8,6 +8,10 @@
     {
       "name": "puppetlabs/stdlib",
       "version_requirement": "\u003e\u003d2.2.1"
+    },
+    {
+      "name": "puppetlabs/mysql",
+      "version_requirement": "\u003e\u003d0.6.1"
     }
   ],
   "types": [],
