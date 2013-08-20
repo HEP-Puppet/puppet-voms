@@ -5,27 +5,27 @@ class voms::admin::config (
    $tomcat_filelimit = $voms::params::tomcat_filelimit
 ) inherits voms::params {
 
-   file{"/etc/voms-admin-puppet":
+   file{'/etc/voms-admin-puppet':
       ensure  => directory,
       purge   => true,
       recurse => true
    }
-   file{"/etc/voms-admin-puppet/README":
+   file{'/etc/voms-admin-puppet/README':
       ensure   => file,
       content  => template('voms/README.erb'),
-      require  => File["/etc/voms-admin-puppet"]
+      require  => File['/etc/voms-admin-puppet']
    }
-   file{"/etc/grid-security/tomcat-hostcert.pem":
+   file{'/etc/grid-security/tomcat-hostcert.pem':
       ensure => file,
-      source => "file:///etc/grid-security/hostcert.pem", 
+      source => 'file:///etc/grid-security/hostcert.pem', 
       mode   => 0644,
       owner  => $tomcatuser,
       group  => root,
       notify => Service['tomcat']
    }
-   file{"/etc/grid-security/tomcat-hostkey.pem":
+   file{'/etc/grid-security/tomcat-hostkey.pem':
       ensure => file,
-      source => "file:///etc/grid-security/hostkey.pem", 
+      source => 'file:///etc/grid-security/hostkey.pem', 
       mode   => 0400,
       owner  => $tomcatuser,
       group  => root,
@@ -47,7 +47,7 @@ class voms::admin::config (
        group   => root,
        notify  => Service['tomcat']
    }
-   file{"/usr/share/voms-admin":
+   file{'/usr/share/voms-admin':
        ensure  => directory,
    }
 
@@ -95,7 +95,7 @@ class voms::admin::config (
        notify => Service['tomcat']
    }
    if $tomcat_filelimit {
-     file{"/etc/security/limits.d/90-tomcat.conf":
+     file{'/etc/security/limits.d/90-tomcat.conf':
          ensure => file,
          owner  => root,
          group  => root,
