@@ -43,7 +43,7 @@
 define voms::core($vo=$name,
                   $port,
                   $issuer=$::fqdn,
-                  $vomstimeout="86400",
+                  $vomstimeout='86400',
                   $sqlhost='localhost',
                   $sqldbname="${name}_db",
                   $sqlport=3306,
@@ -57,9 +57,9 @@ define voms::core($vo=$name,
 
        file{"/etc/voms/${vo}":
          ensure  => directory,
-         mode    => "0755",
-         owner   => "root",
-         group   => "root",
+         mode    => '0755',
+         owner   => 'root',
+         group   => 'root',
          purge   => true,
          recurse  => true,
          require => File['/etc/voms']
@@ -68,20 +68,20 @@ define voms::core($vo=$name,
        file{"/etc/voms/${vo}/voms.conf":
          ensure  => file,
          content => template('voms/voms.conf.erb'),
-         mode    => "0644",
-         owner   => "root",
-         group   => "root",
-         notify  => Service["voms"],
+         mode    => '0644',
+         owner   => 'root',
+         group   => 'root',
+         notify  => Service['voms'],
          require => File["/etc/voms/${vo}"]
        }
        # The package creates the voms user below.
        file{"/etc/voms/${vo}/voms.pass":
          ensure  => file,
          content => "${sqlpwd}\n",
-         mode    => "0640",
-         owner   => "voms",
-         group   => "voms",
-         notify  => Service["voms"],
+         mode    => '0640',
+         owner   => 'voms',
+         group   => 'voms',
+         notify  => Service['voms'],
          require => [File["/etc/voms/${vo}"],Package['voms-server']]
        }
        @@database_user{"${sqlusername}@${::fqdn}":

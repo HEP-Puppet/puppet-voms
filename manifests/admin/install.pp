@@ -11,8 +11,8 @@ class voms::admin::install (
       require => Yumrepo['emi']
    }
 
-   yumrepo{"emi":
-      descr       => "EMI Repository for voms-admin at least.",
+   yumrepo{'emi':
+      descr       => 'EMI Repository for voms-admin at least.',
       baseurl     => "${emirepo}",
       gpgcheck    => 0,
       enabled     => 1,
@@ -21,8 +21,8 @@ class voms::admin::install (
       require     => Yumrepo['emiupdates']
 
    }
-   yumrepo{"emiupdates":
-      descr       => "EMI Updates Repository for voms-admin at least.",
+   yumrepo{'emiupdates':
+      descr       => 'EMI Updates Repository for voms-admin at least.',
       baseurl     => "${emiupdatesrepo}",
       gpgcheck    => 0,
       enabled     => 1,
@@ -31,13 +31,13 @@ class voms::admin::install (
 
    }
 
-   file{"/etc/yum.repos.d/emi.repo":
+   file{'/etc/yum.repos.d/emi.repo':
       ensure => file,
-      require => Yumrepo["emi"]
+      require => Yumrepo['emi']
    }
-   file{"/etc/yum.repos.d/emiupdates.repo":
+   file{'/etc/yum.repos.d/emiupdates.repo':
       ensure => file,
-      require => Yumrepo["emiupdates"]
+      require => Yumrepo['emiupdates']
    }
 
 
