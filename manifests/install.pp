@@ -3,10 +3,10 @@
 # Install voms-clients package and sets up a few directories.
 # 
 class voms::install {
-  package { "voms-clients": 
-    ensure  => latest, 
-    require => Package["lcg-CA"],
-  }
+  #package { "voms-clients": 
+  #  ensure  => latest, 
+  #  require => Package["lcg-CA"],
+  #}
 
   file{'/etc/grid-security/vomsdir':
               ensure  => directory,
@@ -15,7 +15,7 @@ class voms::install {
               mode    => "0755",
               purge   => true,
               recurse => true,
-              require => Package["lcg-CA"],
+              #require => Package["lcg-CA"],
   }                   
   file{'/etc/vomses':
              ensure  => directory,
@@ -24,7 +24,7 @@ class voms::install {
              mode    => "0755",
              purge   => true,
              recurse => true,
-             require => Package["lcg-CA"],
+             #require => Package["lcg-CA"],
   }                   
 
 }
