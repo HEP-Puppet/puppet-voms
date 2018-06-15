@@ -53,7 +53,7 @@ define voms::core($vo=$name,
        ensure_resource('class',"voms::${vo}")
        ensure_resource('class','voms::core::install')
        ensure_resource('class','voms::core::service')
-       Class[Voms::Core::Install] -> Voms::Core[$vo] -> Class[Voms::Core::Service]
+       Class[voms::core::install] -> Voms::Core[$vo] -> Class[voms::core::service]
 
        file{"/etc/voms/${vo}":
          ensure  => directory,

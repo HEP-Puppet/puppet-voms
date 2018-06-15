@@ -72,7 +72,7 @@ define voms::admin($vo=$name,
        ensure_resource('class','voms::admin::install')
        ensure_resource('class','voms::admin::config')
        ensure_resource('class','voms::admin::service')
-       Class[Voms::Admin::Install] -> Class[Voms::Admin::Config] -> Voms::Admin[$vo] -> Class[Voms::Admin::Service]
+       Class[voms::admin::install] -> Class[voms::admin::config] -> Voms::Admin[$vo] -> Class[voms::admin::service]
 
 
        file{"/etc/voms-admin-puppet/voms-admin-add-admin-${vo}.sh":
